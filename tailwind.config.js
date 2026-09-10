@@ -8,10 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Crypgo Color Palette
         background: {
-          DEFAULT: '#030712',
-          secondary: '#0a0e1a',
-          tertiary: '#151a2e'
+          DEFAULT: '#0f1117',
+          secondary: '#1a1d29',
+          tertiary: '#252836'
         },
         surface: {
           DEFAULT: 'rgba(255, 255, 255, 0.03)',
