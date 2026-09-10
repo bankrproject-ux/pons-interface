@@ -9,7 +9,7 @@
 }
 
 body {
-  background: #030712;
+  background: #0f1117;
   color: #ffffff;
   overflow-x: hidden;
 }
@@ -142,7 +142,7 @@ body {
 /* Card with Gradient Border */
 .card-border-gradient {
   position: relative;
-  background: rgba(3, 7, 18, 0.8);
+  background: rgba(15, 17, 23, 0.8);
   border-radius: 16px;
 }
 
