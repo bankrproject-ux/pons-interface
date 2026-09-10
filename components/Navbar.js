@@ -1,18 +1,19 @@
+'use client';
+
 import Link from 'next/link';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Wallet, Zap, ChevronDown } from 'lucide-react';
+import { Menu, X, Wallet, ChevronDown, Rocket, TrendingUp, ArrowLeftRight, BarChart3 } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
 
   const navLinks = [
-    { href: '/', label: 'Home', icon: null },
-    { href: '/launch', label: 'Launch', icon: Rocket },
-    { href: '/tokens', label: 'Tokens', icon: TrendingUp },
-    { href: '/trade', label: 'Trade', icon: ArrowLeftRight },
-    { href: '/analytics', label: 'Analytics', icon: BarChart3 }
+    { href: '/', label: 'Home' },
+    { href: '/launch', label: 'Launch' },
+    { href: '/tokens', label: 'Tokens' },
+    { href: '/trade', label: 'Trade' },
+    { href: '/analytics', label: 'Analytics' }
   ];
 
   return (
@@ -20,7 +21,6 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass rounded-2xl px-6 py-4">
           <div className="flex justify-between items-center">
-            {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-10 h-10 bg-gradient-to-br from-accent-primary to-accent-purple rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-xl">◈</span>
@@ -37,7 +37,6 @@ export default function Navbar() {
               </div>
             </Link>
             
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
@@ -50,7 +49,6 @@ export default function Navbar() {
               ))}
             </div>
             
-            {/* Connect Wallet Button */}
             <button
               onClick={() => setIsConnected(!isConnected)}
               className={`relative overflow-hidden px-6 py-3 rounded-xl font-semibold transition-all group ${
@@ -64,13 +62,8 @@ export default function Navbar() {
                 <span>{isConnected ? 'Connected' : 'Connect Wallet'}</span>
                 {isConnected && <ChevronDown size={16} />}
               </div>
-              
-              {!isConnected && (
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-              )}
             </button>
             
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-xl text-text-secondary hover:text-white hover:bg-white/5 transition-all"
@@ -79,31 +72,22 @@ export default function Navbar() {
             </button>
           </div>
           
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="md:hidden overflow-hidden"
-              >
-                <div className="pt-4 pb-2 space-y-2">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="block px-4 py-3 rounded-xl text-text-secondary hover:text-white hover:bg-white/5 transition-all font-medium"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {isOpen && (
+            <div className="md:hidden overflow-hidden">
+              <div className="pt-4 pb-2 space-y-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-4 py-3 rounded-xl text-text-secondary hover:text-white hover:bg-white/5 transition-all font-medium"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </nav>
